@@ -11,6 +11,9 @@
 
 function copyTextToClipboard(text) {
   var textArea = document.createElement("textarea");
+  var namee = "cookiez_copyinp";
+  textArea.id = namee;
+  textArea.className = namee;
   textArea.style.position = 'fixed';
   textArea.style.top = 0;
   textArea.style.left = 0;
