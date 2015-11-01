@@ -5,11 +5,12 @@
   </head>
   <body>
   
-  <h1>Redirecting...</h1>
+  <h1 style="font-family: 'Open Sans', Arial, sans-serif">Redirecting...</h1>
   
   <script>
-	var filename = window.location.href.split('/').pop();
-	console.log(filename);
+	var id = window.location.href.split('/').pop();
+	console.log('ID: ' + id);
+	window.location.href = "http://ccr.ovh/shortenurl.php?mode=redirect&id=" + id;
   </script>
   </body>
 </html>
