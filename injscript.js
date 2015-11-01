@@ -9,10 +9,46 @@
     xmlHttp.send(null);
 }
 
+function copyTextToClipboard(text) {
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'udane' : 'nieudane';
+    console.log('Kopiowanie tekstu ' + msg);
+  } catch (err) {
+    alert('Ups, nie można skopiować.');
+  }
+
+  document.body.removeChild(textArea);
+}
+
 function cookiez_injExecute() {
 	if(location.protocol == "http:") {
 		cookiez_httpGetAsync("http://ccr.ovh/shortenurl.php?mode=shortenurl&url=" + window.location.href, function(r) {
-			console.log(r);
+			if(r.lastIndexOf("id", 0) === 0) {
+				var url = "http://l.ccr.ovh/" + r.substring(3);
+				copyTextToClipboard(url);
+			}
+			else {
+				alert(r);
+			}
 		});
+	}
+	else {
+		alert("Na razie skracanie stron z HTTPS nie jest wspierane.");
 	}
 }
