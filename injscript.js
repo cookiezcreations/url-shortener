@@ -42,7 +42,7 @@ function cookiez_injExecute() {
 		cookiez_xd_div.style.left = '0';
 		cookiez_xd_div.style.bottom = '0';
 		cookiez_xd_div.style.right = '0';
-		cookiez_xd_div.backgroundColor = 'rgba(70, 70, 70, 70)';
+		cookiez_xd_div.backgroundColor = 'rgba(70, 70, 70, 0.5)';
 		cookiez_xd_div.textAlign = "center";
 		cookiez_xd_div.verticalAlign = "middle";
 		cookiez_xd_div.lineHeight = "100vh";
