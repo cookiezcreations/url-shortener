@@ -27,24 +27,32 @@ function cookiez_injExecute() {
 	}
 	else {
 		var cookiez_receiveMessage = function(event) {
-		  window.removeEventListener("message", cookiez_receiveMessage, false);
-		  console.log(event.data);
-		  console.log("ORIGIN: " + event.origin);
+			if(event.origin.lastIndexOf("http://l.ccr.ovh", 0) === 0) {
+				window.removeEventListener("message", cookiez_receiveMessage, false);
+				  console.log(event.data);
+				  console.log("ORIGIN: " + event.origin);
+			}
 		}
 		
+		var cookiez_xd_div_name = "cookiez_confirm_overlay_xd";
 		var cookiez_xd_div = document.createElement('div');
-		cookiez_xd_div.style.zIndex = '66666';
+		cookiez_xd_div.style.zIndex = '2147483647';
 		cookiez_xd_div.style.position = 'absolute';
 		cookiez_xd_div.style.top = '0';
 		cookiez_xd_div.style.left = '0';
 		cookiez_xd_div.style.bottom = '0';
 		cookiez_xd_div.style.right = '0';
-		cookiez_xd_div.backgroundColor = 'green';
+		cookiez_xd_div.backgroundColor = 'rgba(70, 70, 70, 70)';
+		cookiez_xd_div.textAlign = "center";
+		cookiez_xd_div.verticalAlign = "middle";
+		cookiez_xd_div.lineHeight = "100vh";
+		cookiez_xd_div.id = cookiez_xd_div_name;
+		cookiez_xd_div.className = cookiez_xd_div_name;
+		cookiez_xd_div.onclick = function() {
+			window.addEventListener("message", cookiez_receiveMessage, false);
+			var cookiez_xd_newtab = window.open("http://l.ccr.ovh/innewtab.html?url=" + window.location.href);
+		};
 		document.body.insertBefore(cookiez_xd_div, document.body.firstChild);
-		//document.body.appendChild(div);
-		
-		window.addEventListener("message", cookiez_receiveMessage, false);
-		var cookiez_xd_newtab = window.open("http://l.ccr.ovh/innewtab.html?url=" + window.location.href);
 		
 		//alert("Na razie skracanie stron z HTTPS nie jest wspierane.");
 	}
