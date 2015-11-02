@@ -9,7 +9,7 @@
     xmlHttp.send(null);
 }
 
-function copyToClipboard(text) {
+function cookiez_copyToClipboard(text) {
   window.prompt("Skopiuj do schowka: Ctrl+C, Enter", text);
 }
 
@@ -18,7 +18,7 @@ function cookiez_injExecute() {
 		cookiez_httpGetAsync("http://ccr.ovh/shortenurl.php?mode=shortenurl&url=" + window.location.href, function(r) {
 			if(r.lastIndexOf("id", 0) === 0) {
 				var url = "http://l.ccr.ovh/" + r.substring(3);
-				copyToClipboard(url);
+				cookiez_copyToClipboard(url);
 			}
 			else {
 				alert(r);
@@ -26,23 +26,25 @@ function cookiez_injExecute() {
 		});
 	}
 	else {
-		var receiveMessage = function(event) {
-		  window.removeEventListener("message", receiveMessage, false);
+		var cookiez_receiveMessage = function(event) {
+		  window.removeEventListener("message", cookiez_receiveMessage, false);
 		  console.log(event.data);
+		  console.log("ORIGIN: " + event.origin);
 		}
 		
-		var div = document.createElement('div');
-		div.style.zIndex = '66666';
-		div.style.position = 'absolute';
-		div.style.top = '0';
-		div.style.left = '0';
-		div.style.bottom = '0';
-		div.style.right = '0';
-		div.backgroundColor = 'green';
-		document.body.appendChild(div);
+		var cookiez_xd_div = document.createElement('div');
+		cookiez_xd_div.style.zIndex = '66666';
+		cookiez_xd_div.style.position = 'absolute';
+		cookiez_xd_div.style.top = '0';
+		cookiez_xd_div.style.left = '0';
+		cookiez_xd_div.style.bottom = '0';
+		cookiez_xd_div.style.right = '0';
+		cookiez_xd_div.backgroundColor = 'green';
+		document.body.insertBefore(cookiez_xd_div, document.body.firstChild);
+		//document.body.appendChild(div);
 		
-		window.addEventListener("message", receiveMessage, false);
-		var newtab = window.open("http://l.ccr.ovh/innewtab.html?url=" + window.location.href);
+		window.addEventListener("message", cookiez_receiveMessage, false);
+		var cookiez_xd_newtab = window.open("http://l.ccr.ovh/innewtab.html?url=" + window.location.href);
 		
 		//alert("Na razie skracanie stron z HTTPS nie jest wspierane.");
 	}
