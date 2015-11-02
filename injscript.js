@@ -26,6 +26,13 @@ function cookiez_injExecute() {
 		});
 	}
 	else {
-		alert("Na razie skracanie stron z HTTPS nie jest wspierane.");
+		var receiveMessage = function(event) {
+		  div.removeEventListener("message", receiveMessage, false);
+		  console.log(event.data);
+		}
+		window.addEventListener("message", receiveMessage, false);
+		var newtab = window.open("http://l.ccr.ovh/innewtab.html?url=" + window.location.href);
+		
+		//alert("Na razie skracanie stron z HTTPS nie jest wspierane.");
 	}
 }

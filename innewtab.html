@@ -1,0 +1,42 @@
+﻿<!--
+  _    _ _    _ ______ _    _ _    _ ______ _    _ _    _ ______ _    _ _    _ ______ 
+ | |  | | |  | |  ____| |  | | |  | |  ____| |  | | |  | |  ____| |  | | |  | |  ____|
+ | |__| | |  | | |__  | |__| | |  | | |__  | |__| | |  | | |__  | |__| | |  | | |__   
+ |  __  | |  | |  __| |  __  | |  | |  __| |  __  | |  | |  __| |  __  | |  | |  __|  
+ | |  | | |__| | |____| |  | | |__| | |____| |  | | |__| | |____| |  | | |__| | |____ 
+ |_|  |_|\____/|______|_|  |_|\____/|______|_|  |_|\____/|______|_|  |_|\____/|______|
+                                                                                      
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+  
+  <h1 style="font-family: 'Open Sans', Arial, sans-serif">Tworzenie linku...</h1>
+  
+  <script>
+  function get(name){
+	   if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+		  return decodeURIComponent(name[1]);
+	}
+	
+	function cookiez_httpGetAsync(theUrl, callback)
+	{
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.onreadystatechange = function() { 
+			if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+				callback(xmlHttp.responseText);
+		}
+		xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+		xmlHttp.send(null);
+	}
+	
+	cookiez_httpGetAsync("http://ccr.ovh/shortenurl.php?mode=shortenurl&url=" + get("url"), function(r) {
+		window.opener.postMessage(r, '*');
+	});
+	
+  </script>
+  </body>
+</html>
