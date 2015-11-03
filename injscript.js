@@ -16,7 +16,7 @@ function cookiez_copyToClipboard(text) {
 function cookiez_injExecute() {
 	//if(location.protocol == "http:") {
 		try {
-			cookiez_httpGetAsync("http://ccr.ovh/shortenurl.php?mode=shortenurl&url=" + window.location.href, function(r) {
+			cookiez_httpGetAsync("//ccr.ovh/shortenurl.php?mode=shortenurl&url=" + window.location.href, function(r) {
 				if(r.lastIndexOf("id", 0) === 0) {
 					var url = "http://l.ccr.ovh/" + r.substring(3);
 					cookiez_copyToClipboard(url);
