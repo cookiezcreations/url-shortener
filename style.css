@@ -1,4 +1,18 @@
 ﻿body,html {
 	margin: 0;
+	background: #EFEFEF;
+}
+br {
+   line-height: 200%;
+}
+.infoBookmark {
+	text-align: left;
+	display: inline-block;
+}
+.infoContainer {
+	margin-top: 2%;
 }
 
+#bookmarkHref {
+	width: 100%;
+}
